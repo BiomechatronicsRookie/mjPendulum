@@ -1,1 +1,5 @@
-mjPnd_env
+# Virtual environments
+*\venv
+
+# Python cached files
+*\__pycache__
