@@ -1,17 +1,20 @@
 <mujoco model="linkage">
-  <compiler angle="radian" autolimits="true"/>
-  <statistic meansize="0.502494" extent="2.40957" center="0 0 -0.747711"/>
-  <worldbody>
-    <geom size="0.25 0.25 0.05" pos="0 0 0.1" type="box" contype="0" conaffinity="0" group="1" density="0" rgba="0.1 0.1 0.1 1"/>
-    <body name="link B" pos="0 0 0.05">
-      <inertial pos="0 0 -0.5" mass="0.5" diaginertia="0.5 0.5 0.5"/>
-      <joint name="joint A" pos="0 0 0" axis="0 1 0"/>
-      <geom size="0.05 0.5" pos="0 0 -0.5" type="cylinder" contype="0" conaffinity="0" group="1" density="0" rgba="0.3 0.3 0.3 1"/>
-      <body name="link C" pos="0 0 -1">
-        <inertial pos="0 0 -0.5" mass="0.5" diaginertia="0.5 0.5 0.5"/>
-        <joint name="joint B" pos="0 0 0" axis="0 1 0" damping="0.002"/>
-        <geom size="0.05 0.5" pos="0 0 -0.5" type="cylinder" contype="0" conaffinity="0" group="1" density="0"/>
-      </body>
-    </body>
-  </worldbody>
+	<compiler angle="radian" autolimits="true"/>
+	<option timestep="0.01" integrator="RK4">
+	<flag sensornoise="enable" energy="enable"/>
+	</option>
+	<worldbody>
+        <light diffuse=".5 .5 .5" pos="0 0 3" dir="0 0 -1"/>
+		<geom type="plane" size="1 1 0.1" rgba=".9 0 0 1"/>
+	<!-- First link -->
+    	<body name="link A" pos="0 0 2.5">
+    	<joint name="joint A" pos="0 0 0.5" axis="0 1 0"/>
+    	<geom size="0.05 0.5" type="cylinder" rgba="0 0 0.9 1"/>
+	<!-- Secind link (child) -->
+    		<body name="link B" pos="0 0 0">
+        	<joint name="joint B" pos="0 0 -0.5" axis="0 1 0"/>
+        	<geom size="0.05 0.5" type="cylinder" rgba="0 0.9 0 1"/>
+      		</body>
+    	</body>
+  	</worldbody>
 </mujoco>
