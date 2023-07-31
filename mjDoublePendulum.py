@@ -11,6 +11,7 @@ def set_initial_conditions(mjData):
  
 m = mujoco.MjModel.from_xml_path(r'.\model\mjDblPnd.xml')
 d = mujoco.MjData(m)
+
 controller = mujoco.set_mjcb_control(pd_control)
 d = set_initial_conditions(d)
 
