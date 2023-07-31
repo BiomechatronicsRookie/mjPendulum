@@ -1,15 +1,22 @@
 import time
-
+import numpy as np
 import mujoco
 import mujoco.viewer
 
 m = mujoco.MjModel.from_xml_path(r'.\model\mjDblPnd.xml')
 d = mujoco.MjData(m)
 
-with mujoco.viewer.launch_passive(m, d) as viewer:
+def set_initial_conditions(mjData):
+  mjData.qpos = np.random.rand(2)*np.pi
+  return mjData
+
+d = set_initial_conditions(d)
+
+
+with mujoco.viewer.launch(m, d) as viewer:
   # Close the viewer automatically after 30 wall-seconds.
   start = time.time()
-  while viewer.is_running() and time.time() - start < 30:
+  while viewer.is_running():
     step_start = time.time()
 
     # mj_step can be replaced with code that also evaluates
