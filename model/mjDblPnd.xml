@@ -17,4 +17,10 @@
       		</body>
     	</body>
   	</worldbody>
+	<actuator> 
+		<motor joint="joint A" gear = "1" ctrlrange="-100 100"/>
+	</actuator>
+	<actuator> 
+		<motor joint="joint B" gear = "1" ctrlrange="-100 100"/>
+	</actuator>
 </mujoco>
