@@ -6,13 +6,13 @@
 	<worldbody>
 	<!-- First link -->
     	<body name="link A" pos="0 0 2.5" >
-		<inertial pos="0 0 2.5" mass="0.1" diaginertia="0.0075 0.00001 0.0075"/>
-    	<joint name="joint A" pos="0 0 0.5" axis="0 1 0"/>
+		<inertial pos="0 0 0.25" mass="0.1" diaginertia="0.002 0.002 0.002"/>
+    	<joint type="hinge" name="joint A" pos="0 0 0.5" axis="0 1 0"/>
     	<geom size="0.05 0.5" type="cylinder" rgba="0 0 0.9 1"/>
 	<!-- Secind link (child) -->
     		<body name="link B" pos="0 0 0" >
-			<inertial pos="0 0 0" mass="0.1" diaginertia="0.0075 0.00001 0.0075"/>
-        	<joint name="joint B" pos="0 0 -0.5" axis="0 1 0"/>
+			<inertial pos="0 0 0.25" mass="0.1" diaginertia="0.002 0.002 0.002"/>
+        	<joint type="hinge" name="joint B" pos="0 0 -0.5" axis="0 1 0"/>
         	<geom size="0.05 0.5" type="cylinder" rgba="0 0.9 0 1"/>
       		</body>
     	</body>

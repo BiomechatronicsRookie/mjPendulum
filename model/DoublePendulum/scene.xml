@@ -1,4 +1,4 @@
-<mujoco model="panda scene">
+<mujoco model="Double Pendulum scene">
 
   <include file="mjDblPnd.xml"/>
 
