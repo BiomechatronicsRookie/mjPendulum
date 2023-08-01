@@ -1,0 +1,23 @@
+<mujoco model="Cart on a Pole">
+	<compiler angle="radian" autolimits="true"/>
+	<option timestep="0.001" integrator="RK4">
+	<flag sensornoise="enable" energy="enable"/>
+	</option>
+	<worldbody>
+	<!-- First link -->
+    	<body name="Base" pos="0 0 1.5" >
+		    <inertial pos="0.1 0.1 0.05" mass="1" diaginertia="0.033 0.033 0.033"/>
+    	    <joint type="slide" name="Slide" pos="0 0.1 0.05" axis="1 0 0" limited="true" range="-5 5"/>
+    	    <geom size="0.2 0.2 0.1" type="box" rgba="0.9 0.9 0.9 1"/>
+	<!-- Secind link (child) -->
+    		<body name="link B" pos="0 -0.26 -0.5" >
+			    <inertial pos="0 0 0.25" mass="0.1" diaginertia="0.002 0.002 0.002"/>
+        	    <joint type="hinge" name="Hinge" pos="0 0 0.5" axis="0 1 0" />
+        	    <geom size="0.05 0.5" type="cylinder" rgba="0 0.9 0 1"/>
+      		</body>
+    	</body>
+  	</worldbody>
+	<actuator> 
+		<motor joint="Slide" gear = "1" ctrlrange="-100 100"/>
+	</actuator>
+</mujoco>
