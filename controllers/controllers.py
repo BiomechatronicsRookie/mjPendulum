@@ -12,3 +12,8 @@ def pd_control(mj_Model, mj_Data):
   mj_Data.ctrl[1] = -kp*(mj_Data.qpos[1] - qpose_r[1]) - kv*mj_Data.qvel[1]
 
   return
+
+def random_controller(mj_Model, mj_Data):
+  k = 0
+  mj_Data.ctrl[0] = k*(np.random.rand() - 0.5)/0.5
+  return
