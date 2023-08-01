@@ -5,14 +5,15 @@ import mujoco.viewer
 from controllers.controllers import *
 
 def set_initial_conditions(mjData):
-  mjData.qpos = np.random.rand(2)*np.pi
+  mjData.qpos[0] = 0
+  mjData.qpos[1] = np.pi #np.random.rand()*np.pi
   return mjData
 
  
-m = mujoco.MjModel.from_xml_path(r'.\model\scene.xml')
+m = mujoco.MjModel.from_xml_path(r'.\model\CartPole\scene.xml')
 d = mujoco.MjData(m)
 
-controller = mujoco.set_mjcb_control(pd_control)
+controller = mujoco.set_mjcb_control(random_controller)
 d = set_initial_conditions(d)
 
 
