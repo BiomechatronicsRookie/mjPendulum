@@ -4,8 +4,6 @@
 	<flag sensornoise="enable" energy="enable"/>
 	</option>
 	<worldbody>
-        <light diffuse=".5 .5 .5" pos="0 0 3" dir="0 0 -1"/>
-		<geom type="plane" size="1 1 0.1" rgba=".9 0 0 1"/>
 	<!-- First link -->
     	<body name="link A" pos="0 0 2.5" >
 		<inertial pos="0 0 2.5" mass="0.1" diaginertia="0.0075 0.00001 0.0075"/>

@@ -9,7 +9,7 @@ def set_initial_conditions(mjData):
   return mjData
 
  
-m = mujoco.MjModel.from_xml_path(r'.\model\mjDblPnd.xml')
+m = mujoco.MjModel.from_xml_path(r'.\model\scene.xml')
 d = mujoco.MjData(m)
 
 controller = mujoco.set_mjcb_control(pd_control)
