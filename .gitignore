@@ -3,3 +3,6 @@
 
 # Python cached files
 *\__pycache__
+
+# Mujoco logs
+MUJOCO_LOG.TXT
