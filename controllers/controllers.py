@@ -1,15 +1,22 @@
 import mujoco
 import numpy as np
 
-def pd_control(mj_Model, mj_Data):
-  # Control constants
+def joint_pd_control(mj_Model, mj_Data):
+  # Control constants and setpoint
   kp = 7.0
   kv = 1.0
-  # Setpoint (radians)
   qpose_r = (np.pi/2, np.pi)
-
-  mj_Data.ctrl[0] = -kp*(mj_Data.qpos[0] - qpose_r[0]) - kv*mj_Data.qvel[0]
-  mj_Data.ctrl[1] = -kp*(mj_Data.qpos[1] - qpose_r[1]) - kv*mj_Data.qvel[1]
+  
+  # Same control values per joint
+  if type(kp) == float and type(kv) == float :
+    for i in range(len(mj_Data.ctrl)):
+      mj_Data.ctrl[i] = -kp*(mj_Data.qpos[i] - qpose_r[i]) - kv*mj_Data.qvel[i]
+      
+  # Joint specific control values
+  else:
+    if len(kp) < len(mj_Data.qpos) or len(kv) < len(mj_Data.qvel):
+      raise ValueError("Arrays must hold the same size")
+    mj_Data.ctrl = -kp[i]*(mj_Data.qpos[i] - qpose_r[i]) - kv[i]*mj_Data.qvel[i]
 
   return
 
