@@ -6,3 +6,6 @@
 
 # Mujoco logs
 MUJOCO_LOG.TXT
+
+# Gifs
+*.gif
