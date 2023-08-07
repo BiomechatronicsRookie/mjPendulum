@@ -9,3 +9,6 @@ MUJOCO_LOG.TXT
 
 # Gifs
 *.gif
+
+# Pckg info
+*\local_RK45.egg-info
