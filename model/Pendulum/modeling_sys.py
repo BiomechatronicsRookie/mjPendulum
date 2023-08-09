@@ -7,9 +7,8 @@ import sys
 from RK45 import ode45
 
 class Pendulum():
-    def __init__(self,m1,m2,l,g,b):
+    def __init__(self,m1,l,g,b):
         self.m1 = m1
-        self.m2 = m2
         self.l = l 
         self.g = g
         self.b = b
@@ -49,17 +48,16 @@ def main():
     ##---------- Nonlinear Dynamics ----------
     # Model Parameters
     m1 = 1
-    m2 = 1 
     l = 1
     g = 9.8 
-    b = 0.3
+    b = 0.0
     h = 0.02
     t_ = np.arange(0,10,h)
     
     x0 = np.array([np.pi/2, 0])
 
     # Object definition and simulation
-    p = Pendulum(m1,m2,l,g,b)
+    p = Pendulum(m1,l,g,b)
     p.sym(x0, t_)
     p.forward_kinematics()
 
