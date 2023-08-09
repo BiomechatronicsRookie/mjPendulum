@@ -14,7 +14,7 @@ class Pendulum():
         self.g = g
         self.b = b
 
-    def dynamics(self, x, t, u = None, args = None):
+    def dynamics(self, x, t, u = None, *args):
         (g, l, b) = args
         th, w = x
         dydt = np.array([w, -b*w -g/l*np.sin(th)]) + u
@@ -33,12 +33,12 @@ class Pendulum():
         ax.set_ylim(min(self.data[1,:])-0.1, max(self.data[1,:])+0.1)
         ax.grid()
         ax.set_aspect('equal', 'box')
-        line = ax.scatter([],[],s = 20, c = 'b', marker='o')
+        line, = ax.plot([], [], lw = 1, marker='o', color = 'b')
         time_text = ax.text(0.05, 0.9, '', transform = ax.transAxes)
 
         def animate(i):
             time_text.set_text(f"time = {dt*i:1f}s")
-            line.set_offsets(np.c_[[0,self.data[0,i]], [0,self.data[1,i]]])
+            line.set_data([0,self.data[0,i]], [0,self.data[1,i]])
             return line, time_text,
 
         ani = FuncAnimation(fig, animate, max(self.data.shape), interval = dt*1000, repeat = False, blit = True)
@@ -69,7 +69,7 @@ def main():
     ax[1].plot(t_,p.states[:,1])
     plt.show()
 
-    p.annimate(h, 1/h,'./model/Pendulum/animation.gif')
+    p.annimate(h, 1/h,'./model/Pendulum/pendulum_animation.gif')
 
 
 if __name__=='__main__':
