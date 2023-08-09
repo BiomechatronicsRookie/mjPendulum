@@ -4,10 +4,10 @@ from scipy.integrate import odeint
 
 
 def RK45step(fun, x, t, u, h, args):
-    k1 = fun(x,t,u,args)
-    k2 = fun(x + (h/2)*k1, t + (h/2), u, args)
-    k3 = fun(x + (h/2)*k2, t + (h/2), u, args)
-    k4 = fun(x + h*k3, t + h, u, args)
+    k1 = fun(x,t,u,*args)
+    k2 = fun(x + (h/2)*k1, t + (h/2), u, *args)
+    k3 = fun(x + (h/2)*k2, t + (h/2), u, *args)
+    k4 = fun(x + h*k3, t + h, u, *args)
     xk1 = x + h/6*(k1 + 2*k2 + 2*k3 + k4)
     return xk1
 
@@ -34,13 +34,11 @@ def ode45(fun, x0, t, u = None, args = None):
 
 if __name__=='__main__':
 
-    def fun(x, t, u, args):
-        (k,) = args
+    def fun(x, t, u, k):
         dxdt = -k*x + u
         return dxdt
     
-    def fun_ode(x, t, *args):
-        (k,) = args
+    def fun_ode(x, t, k):
         dxdt = -k*x
         return dxdt
     
